@@ -4,6 +4,7 @@ using DeclarationPlus.Domain.ValueObjects.Ids;
 using DeclarationPlus.Domain.ValueObjects.Scoring;
 using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,7 +15,7 @@ namespace DeclarationPlus.Core.Contracts
     {
         Task<Declaration> GetByIdAsync(DeclarationId id);
 
-        Task<IReadOnlyList<Declaration>> GetAllAsync();
+        Task<ImmutableArray<Declaration>> GetAllAsync();
 
         Task<DeclarationId> SubmitAsync(Declaration declaration);
 

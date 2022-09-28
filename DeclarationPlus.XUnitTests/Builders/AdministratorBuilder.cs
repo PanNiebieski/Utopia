@@ -10,11 +10,11 @@ namespace DeclarationPlus.XUnitTests.Builders
 {
     public class AdministratorBuilder
     {
-        private Territory terriory = TerritoryBuilder.GivenBuilder().Build();
+        private Territory terriory = TerritoryBuilder.GivenTerritory().Build();
 
         private AdministratorId administratorId = new AdministratorId(999);
 
-        public static AdministratorBuilder GiveBuilder() => new AdministratorBuilder();
+        public static AdministratorBuilder GiveAdministrator() => new AdministratorBuilder();
 
         public AdministratorBuilder WithTerritory(
 Action<TerritoryBuilder> territoryBuilderAction)

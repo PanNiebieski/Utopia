@@ -18,7 +18,7 @@ namespace DeclarationPlus.XUnitTests.Builders
         private NumberOfKids numberOfKids = new NumberOfKids(0);
 
 
-        public static CitizenBuilder GivenBuilder() => new CitizenBuilder();
+        public static CitizenBuilder GivenCitizen() => new CitizenBuilder();
 
         public CitizenBuilder WithAge(int age)
         {

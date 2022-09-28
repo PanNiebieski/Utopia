@@ -23,15 +23,13 @@ namespace DeclarationPlus.Domain.Entities
 
         public Territory Territory { get; set; }
 
+        public DeclarationStatus Status { get; private set; }
+
         public Declaration(Citizen citizen,
                DeclarationId declarationId, Territory territory)
         {
             if (citizen == null)
                 throw new ArgumentException("citizen cannot be null");
-            if (result == null)
-                throw new ArgumentException("Number cannot be null");
-            if (finalDecision == null)
-                throw new ArgumentException("finalDecision cannot be null");
             if (declarationId == null)
                 throw new ArgumentException("declarationId cannot be null");
             if (territory == null)
@@ -39,8 +37,6 @@ namespace DeclarationPlus.Domain.Entities
 
 
             Id = declarationId;
-            FinalDecision = finalDecision;
-            Result = result;
             Citizen = citizen;
             Territory = territory;
         }

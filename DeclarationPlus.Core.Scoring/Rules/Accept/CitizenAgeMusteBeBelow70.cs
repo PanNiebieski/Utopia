@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DeclarationPlus.Core.Scoring.Rules.Accept
 {
-    internal class CitizenAgeMusteBeBelow70 : IScoringRejectRule
+    public class CitizenAgeMusteBeBelow70 : IScoringRejectRule
     {
         public string Message
         {

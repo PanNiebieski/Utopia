@@ -12,21 +12,24 @@ namespace DeclarationPlus.XUnitTests.Builders
 {
     public class DeclarationBuilder
     {
+        public static DeclarationBuilder GivenDeclaration() => new DeclarationBuilder();
+
+
         private DeclarationId declarationId = new DeclarationId(999);
 
         private Citizen citizen = new CitizenBuilder().Build();
 
-        private Territory territory = TerritoryBuilder.GivenBuilder().Build();
+        private Territory territory = TerritoryBuilder.GivenTerritory().Build();
 
 
         private ScoringRulesFactory scoringRulesFactory = new ScoringRulesFactory();
 
-        private Administrator administrator = AdministratorBuilder.GiveBuilder().Build();
+        private Administrator administrator = AdministratorBuilder.GiveAdministrator().Build();
 
 
         public DeclarationBuilder WithAdministrator(int adminstratorId, int territoryId)
         {
-            administrator = AdministratorBuilder.GiveBuilder().WithId(adminstratorId)
+            administrator = AdministratorBuilder.GiveAdministrator().WithId(adminstratorId)
                 .WithTerritory(s => s.WithId(territoryId)).Build();
 
             return this;
@@ -49,6 +52,16 @@ namespace DeclarationPlus.XUnitTests.Builders
             territory = categoryBuilder.Build();
             return this;
         }
+
+        public DeclarationBuilder WithCitizen(
+    Action<CitizenBuilder> CitizenBuilderAction)
+        {
+            var citizenBuilder = new CitizenBuilder();
+            CitizenBuilderAction(citizenBuilder);
+            citizen = citizenBuilder.Build();
+            return this;
+        }
+
 
         public Declaration Build()
         {

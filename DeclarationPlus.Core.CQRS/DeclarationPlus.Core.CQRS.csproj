@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -8,11 +8,12 @@
 
   <ItemGroup>
     <Folder Include="Administrators\Commands\" />
-    <Folder Include="Administrators\Queries\" />
-    <Folder Include="Declarations\Commands\" />
-    <Folder Include="Declarations\Queries\" />
+    <Folder Include="Administrators\Queries\GetAllAdministrators\" />
+    <Folder Include="Declarations\Commands\AcceptDeclaration\" />
+    <Folder Include="Declarations\Commands\EvaluateDeclaration\" />
+    <Folder Include="Declarations\Commands\RejectDeclaration\" />
     <Folder Include="Territory\Commands\" />
-    <Folder Include="Territory\Queries\" />
+    <Folder Include="Territory\Queries\GetAllTerriotries\" />
   </ItemGroup>
 
   <ItemGroup>

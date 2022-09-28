@@ -15,7 +15,7 @@ namespace DeclarationPlus.XUnitTests.Builders
         private TerritoryId territoryId =
             new TerritoryId(999);
 
-        public static TerritoryBuilder GivenBuilder() => new TerritoryBuilder();
+        public static TerritoryBuilder GivenTerritory() => new TerritoryBuilder();
 
         public TerritoryBuilder WithId(int categorId)
         {
