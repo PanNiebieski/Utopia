@@ -1,6 +1,6 @@
 namespace DeclarationPlus.XUnitTests
 {
-    public class UnitTest1
+    public class ScoringTest
     {
         [Fact]
         public void Test1()

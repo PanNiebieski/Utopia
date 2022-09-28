@@ -23,7 +23,7 @@ namespace DeclarationPlus.Domain.Entities
 
         public Territory Territory { get; set; }
 
-        public Declaration(Citizen citizen, DeclarationScoringResult result, Decision finalDecision,
+        public Declaration(Citizen citizen,
                DeclarationId declarationId, Territory territory)
         {
             if (citizen == null)
