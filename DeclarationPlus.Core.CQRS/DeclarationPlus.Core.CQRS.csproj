@@ -6,4 +6,13 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Administrators\Commands\" />
+    <Folder Include="Administrators\Queries\" />
+    <Folder Include="Declarations\Commands\" />
+    <Folder Include="Declarations\Queries\" />
+    <Folder Include="Territory\Commands\" />
+    <Folder Include="Territory\Queries\" />
+  </ItemGroup>
+
 </Project>

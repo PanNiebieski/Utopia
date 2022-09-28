@@ -6,4 +6,12 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\DeclarationPlus.Domain.Scoring\DeclarationPlus.Domain.Scoring.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Rules\Warring\" />
+  </ItemGroup>
+
 </Project>

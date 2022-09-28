@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DeclarationPlus.Domain.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,7 @@ namespace DeclarationPlus.Domain.Scoring
 {
     public interface IScoringSocialScore
     {
-        public int AddPoints(/*Declaration  dec*/);
-        public int Description { get; }
+        public int AddOrLowerPoints(Declaration  dec);
+        public string Description { get; }
     }
 }
