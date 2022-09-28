@@ -29,7 +29,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeclarationPlus.Core.Contra
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeclarationPlus.Core.Scoring", "DeclarationPlus.Core.Scoring\DeclarationPlus.Core.Scoring.csproj", "{62725AF2-66EB-487A-A787-42914A781E27}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.Core", "Common.Core\Common.Core.csproj", "{EF0A9BA7-A931-4881-A1BC-4A3C5B0645B0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.Core.CQRS", "Common.Core\Common.Core.CQRS.csproj", "{EF0A9BA7-A931-4881-A1BC-4A3C5B0645B0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeclarationPlus.XUnitTests", "DeclarationPlus.XUnitTests\DeclarationPlus.XUnitTests.csproj", "{341946DF-15F6-495C-82B2-83C26A9999F9}"
 EndProject

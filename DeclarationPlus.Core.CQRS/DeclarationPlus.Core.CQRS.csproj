@@ -15,4 +15,8 @@
     <Folder Include="Territory\Queries\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Common.Core\Common.Core.CQRS.csproj" />
+  </ItemGroup>
+
 </Project>
