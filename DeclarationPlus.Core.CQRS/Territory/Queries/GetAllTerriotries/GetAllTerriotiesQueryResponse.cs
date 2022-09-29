@@ -10,9 +10,9 @@ namespace DeclarationPlus.Core.CQRS.Territory.Queries.GetAllTerriotries
 {
     public class GetAllTerriotiesQueryResponse
     {
-        public ImmutableArray<TerritoryDto> List { get; set; }
+        public List<TerritoryDto> List { get; set; }
 
-        public GetAllTerriotiesQueryResponse(ImmutableArray<TerritoryDto> list)
+        public GetAllTerriotiesQueryResponse(List<TerritoryDto> list)
         {
             List = list;
         }

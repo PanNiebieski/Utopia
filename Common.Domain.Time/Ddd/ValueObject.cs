@@ -10,9 +10,9 @@ namespace Common.Domain.Ddd
     {
         protected abstract IEnumerable<object> GetAttributesToIncludeInEqualityCheck();
 
-        protected virtual ValidationMessage CheckValidation()
+        protected virtual ValidationStatus CheckValidation()
         {
-            return ValidationMessage.Valid();
+            return ValidationStatus.Valid();
         }
 
         public override bool Equals(object other)

@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DeclarationPlus.Core.Contracts\DeclarationPlus.Core.Contracts.csproj" />
+    <ProjectReference Include="..\DeclarationPlus.Core.Scoring\DeclarationPlus.Core.Scoring.csproj" />
   </ItemGroup>
 
 </Project>

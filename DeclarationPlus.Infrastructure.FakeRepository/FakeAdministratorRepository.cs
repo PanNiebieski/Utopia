@@ -1,6 +1,7 @@
 ﻿using DeclarationPlus.Core.Contracts;
 using DeclarationPlus.Domain.Entities;
 using DeclarationPlus.Domain.ValueObjects.Ids;
+using System.Collections.Immutable;
 
 namespace DeclarationPlus.Infrastructure.FakeRepository
 {
@@ -22,6 +23,11 @@ namespace DeclarationPlus.Infrastructure.FakeRepository
             administrators.Add(new Administrator(new Territory(new TerritoryId(3)), new AdministratorId(10)));
         }
 
+        public async Task<List<Administrator>> GetAllAsync()
+        {
+            await Task.Delay(500);
+            return administrators.ToList();
+        }
 
         public async Task<Administrator> GetByIdAsync(AdministratorId id)
         {

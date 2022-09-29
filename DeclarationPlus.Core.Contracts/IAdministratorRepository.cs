@@ -15,7 +15,7 @@ namespace DeclarationPlus.Core.Contracts
     {
         Task<Administrator> GetByIdAsync(AdministratorId id);
 
-        Task<ImmutableArray<Administrator>> GetAllAsync();
+        Task<List<Administrator>> GetAllAsync();
 
     }
 }

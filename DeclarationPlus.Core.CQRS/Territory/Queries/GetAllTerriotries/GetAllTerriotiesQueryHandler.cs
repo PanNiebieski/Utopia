@@ -31,9 +31,9 @@ namespace DeclarationPlus.Core.CQRS.Territory.Queries.GetAllTerriotries
 
             if (query.OrderBy == OrderByTerritoryOptions.ById)
                 list = list.OrderByDescending(t => t.Id).Skip((query.Page -1) * query.Page).
-                    Take(query.PageSize).ToImmutableArray();
+                    Take(query.PageSize).ToList();
 
-            var maped = _mapper.Map<ImmutableArray<TerritoryDto>>(list);
+            var maped = _mapper.Map<List<TerritoryDto>>(list);
 
             return new GetAllTerriotiesQueryResponse(maped);
         }

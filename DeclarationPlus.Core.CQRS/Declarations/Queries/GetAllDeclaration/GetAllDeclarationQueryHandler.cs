@@ -30,7 +30,7 @@ namespace DeclarationPlus.Core.CQRS.Declarations.Queries.GetAllDeclaration
         {
             var list = await _territoryRepository.GetAllAsync();
 
-            var maped = _mapper.Map<ImmutableArray<DeclarationViewModel>>(list);
+            var maped = _mapper.Map<List<DeclarationViewModel>>(list);
 
             return new GetAllDeclarationQueryResponse(maped);
         }

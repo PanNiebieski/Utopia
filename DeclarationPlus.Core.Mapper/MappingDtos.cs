@@ -19,6 +19,18 @@ namespace DeclarationPlus.Core.Mapper
             CreateMap<TerritoryDto, Territory>()
                 .ForMember(s => s.Id, o => o.MapFrom(k => new TerritoryId(k.Id)));
 
+
+            CreateMap<Administrator, AdministratorDto>()
+                .ForMember(s => s.Id, o => o.MapFrom(k => k.Id.Value));
+
+            CreateMap<AdministratorDto, Administrator>()
+                .ForMember(s => s.Id, o => o.MapFrom(k => new TerritoryId(k.Id)));
+
+            CreateMap<Declaration, DeclarationViewModel>().ConvertUsing(new DeclarationViewModelTypeConverter());
+         
+
         }
+
+
     }
 }

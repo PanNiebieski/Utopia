@@ -1,10 +1,3 @@
-using Common.Core.CQRS;
-using DeclarationPlus.Core.CQRS.Administrators.Queries.GetAllAdministrators;
-using DeclarationPlus.Core.CQRS.Territory.Queries.GetAllTerriotries;
-using DeclarationPlus.Infrastructure.FakeRepository;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Hosting;
-
 var builder = WebApplication.CreateBuilder(args);
 
 
@@ -13,6 +6,7 @@ builder.Services.AddSwaggerGen();
 
 
 builder.Services.AddDeclarationPlusFakeRepositoriesServices(builder.Configuration);
+builder.Services.AddMapping();
 builder.Services.AddQueries();
 builder.Services.AddCommands();
 
@@ -38,6 +32,27 @@ app.MapGet("/territories/GetAllAdministrators", HandlAllAdministrators)
     .Produces(StatusCodes.Status404NotFound);
 
 app.MapGet("/declaration/getAllDeclarations", HandlAllDeclarations)
+    .Produces(StatusCodes.Status200OK)
+    .Produces(StatusCodes.Status400BadRequest)
+    .Produces(StatusCodes.Status404NotFound);
+
+
+app.MapPost("/declaration/submitDeclaration", HandlAllDeclarations)
+    .Produces(StatusCodes.Status200OK)
+    .Produces(StatusCodes.Status400BadRequest)
+    .Produces(StatusCodes.Status404NotFound);
+
+app.MapPost("/declaration/AcceptDeclaration", HandlAllDeclarations)
+    .Produces(StatusCodes.Status200OK)
+    .Produces(StatusCodes.Status400BadRequest)
+    .Produces(StatusCodes.Status404NotFound);
+
+app.MapPost("/declaration/EvaluateDeclaration", HandlAllDeclarations)
+    .Produces(StatusCodes.Status200OK)
+    .Produces(StatusCodes.Status400BadRequest)
+    .Produces(StatusCodes.Status404NotFound);
+
+app.MapPost("/declaration/RejectDeclaration", HandlAllDeclarations)
     .Produces(StatusCodes.Status200OK)
     .Produces(StatusCodes.Status400BadRequest)
     .Produces(StatusCodes.Status404NotFound);
@@ -80,15 +95,14 @@ async ValueTask<IResult> HandlAllAdministrators(
 }
 
 async ValueTask<IResult> HandlAllDeclarations(
-    [FromServices] QueryHandler<GetAllAdministratorsQuery, GetAllAdministratorsQueryResponse> query,
-    int? territoryid,
+    [FromServices] QueryHandler<GetAllDeclarationQuery, GetAllDeclarationQueryResponse> query,
     CancellationToken ct
 )
 {
     Console.WriteLine("HandlAllDeclarations");
-    var result = await query(new GetAllAdministratorsQuery(territoryid), ct);
+    var result = await query(new GetAllDeclarationQuery(), ct);
 
-    if (result.List == null || result.List.Count() == 0)
+    if (result.List == null)
         return Results.BadRequest();
 
     return Results.Ok(result);

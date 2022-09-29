@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Common.Domain;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,11 @@ namespace DeclarationPlus.Domain.Ddd
         //public DateTime CreatedDate { get; set; }
         //public string LastModifiedBy { get; set; }
         //public DateTime? LastModifiedDate { get; set; }
+
+        protected virtual ValidationStatus CheckValidation()
+        {
+            return ValidationStatus.Valid();
+        }
     }
 
     public abstract class Entity<T1, T2>

@@ -10,9 +10,9 @@ namespace DeclarationPlus.Core.CQRS.Declarations.Queries.GetAllDeclaration
 {
     public class GetAllDeclarationQueryResponse
     {
-        public ImmutableArray<DeclarationViewModel> List { get; set; }
+        public List<DeclarationViewModel> List { get; set; }
 
-        public GetAllDeclarationQueryResponse(ImmutableArray<DeclarationViewModel> list)
+        public GetAllDeclarationQueryResponse(List<DeclarationViewModel> list)
         {
             List = list;
         }

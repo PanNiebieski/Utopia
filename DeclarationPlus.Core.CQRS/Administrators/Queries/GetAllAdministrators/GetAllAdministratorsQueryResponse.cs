@@ -10,9 +10,9 @@ namespace DeclarationPlus.Core.CQRS.Administrators.Queries.GetAllAdministrators
 {
     public class GetAllAdministratorsQueryResponse
     {
-        public ImmutableArray<AdministratorDto> List { get; set; }
+        public List<AdministratorDto> List { get; set; }
 
-        public GetAllAdministratorsQueryResponse(ImmutableArray<AdministratorDto> list)
+        public GetAllAdministratorsQueryResponse(List<AdministratorDto> list)
         {
             List = list;
         }

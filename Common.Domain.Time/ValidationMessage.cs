@@ -7,15 +7,20 @@ using System.Threading.Tasks;
 
 namespace Common.Domain
 {
-    public class ValidationMessage
+    public class ValidationStatus
     {
         public bool IsValid { get; set; } = true;
 
-        public List<string> WhatIsWrong { get; set; }
+        public List<string> ValidationErrors { get; set; }
 
-        public static ValidationMessage Valid()
+        public ValidationStatus()
         {
-            return new ValidationMessage();
+            ValidationErrors = new List<string>();
+        }
+
+        public static ValidationStatus Valid()
+        {
+            return new ValidationStatus();
         }
     }
 }

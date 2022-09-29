@@ -1,6 +1,9 @@
 ﻿using DeclarationPlus.Core.Contracts;
+using DeclarationPlus.Core.Scoring;
 using DeclarationPlus.Domain.Entities;
+using DeclarationPlus.Domain.Scoring;
 using DeclarationPlus.Domain.ValueObjects;
+using DeclarationPlus.Domain.ValueObjects.CitizenValues;
 using DeclarationPlus.Domain.ValueObjects.Ids;
 using DeclarationPlus.Domain.ValueObjects.Scoring;
 using System;
@@ -16,11 +19,20 @@ namespace DeclarationPlus.Infrastructure.FakeRepository
     {
         List<Declaration> declarations = new List<Declaration>();
 
+        public FakeDeclarationRepository()
+        {
+            declarations.Add(new Declaration(
+                new Citizen(new Name("Cezary", "Walenciuk"), DateTime.Now.AddYears(-34), new NumberOfKids(1)),
+                new DeclarationId(1), new Territory(new TerritoryId(1))));
 
-        public async Task<ImmutableArray<Declaration>> GetAllAsync()
+            declarations[0].Evaluate(new ScoringRulesFactory().DefaultSet);
+        }
+
+
+        public async Task<List<Declaration>> GetAllAsync()
         {
             await Task.Delay(500);
-            return declarations.ToImmutableArray();
+            return declarations.ToList();
         }
 
         public async Task<Declaration> GetByIdAsync(DeclarationId id)

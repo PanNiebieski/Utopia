@@ -22,10 +22,10 @@ namespace DeclarationPlus.Infrastructure.FakeRepository
             territories.Add(new Territory(new TerritoryId(3)));
         }
 
-        public async Task<ImmutableArray<Territory>> GetAllAsync()
+        public async Task<List<Territory>> GetAllAsync()
         {
             await Task.Delay(500);
-            return territories.ToImmutableArray();
+            return territories.ToList();
         }
 
         public async Task<Territory> GetByIdAsync(TerritoryId id)

@@ -31,9 +31,9 @@ namespace DeclarationPlus.Core.CQRS.Administrators.Queries.GetAllAdministrators
             var list = await _territoryRepository.GetAllAsync();
 
             if (query.territoryId.HasValue)
-                list = list.Where(a => a.Territory.Id.Value == query.territoryId.Value).ToImmutableArray();
+                list = list.Where(a => a.Territory.Id.Value == query.territoryId.Value).ToList();
 
-            var maped = _mapper.Map<ImmutableArray<AdministratorDto>>(list);
+            var maped = _mapper.Map<List<AdministratorDto>>(list);
 
             return new GetAllAdministratorsQueryResponse(maped);
         }

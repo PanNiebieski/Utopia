@@ -13,6 +13,6 @@ namespace DeclarationPlus.Core.Contracts
     {
         Task<Territory> GetByIdAsync(TerritoryId id);
 
-        Task<ImmutableArray<Territory>> GetAllAsync();
+        Task<List<Territory>> GetAllAsync();
     }
 }

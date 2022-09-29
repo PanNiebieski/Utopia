@@ -15,7 +15,7 @@ namespace DeclarationPlus.Core.Contracts
     {
         Task<Declaration> GetByIdAsync(DeclarationId id);
 
-        Task<ImmutableArray<Declaration>> GetAllAsync();
+        Task<List<Declaration>> GetAllAsync();
 
         Task<DeclarationId> SubmitAsync(Declaration declaration);
 

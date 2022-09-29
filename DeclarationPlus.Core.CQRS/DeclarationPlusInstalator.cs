@@ -1,4 +1,7 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using DeclarationPlus.Core.CQRS.Administrators.Queries.GetAllAdministrators;
+using DeclarationPlus.Core.CQRS.Declarations.Queries.GetAllDeclaration;
+using DeclarationPlus.Core.CQRS.Territory.Queries.GetAllTerriotries;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,9 +15,14 @@ namespace Common.Core.CQRS
         public static IServiceCollection AddQueries (this IServiceCollection services)
         {
 
-            //services.AddQueryHandler
-            //    <GetAllPostsQuery, List<Post>, GetAllPostsQueryHandler>();
+            services.AddQueryHandler
+                <GetAllAdministratorsQuery, GetAllAdministratorsQueryResponse, GetAllAdministratorsQueryHandler>();
 
+            services.AddQueryHandler
+                <GetAllTerriotiesQuery, GetAllTerriotiesQueryResponse, GetAllTerriotiesQueryHandler>();
+
+            services.AddQueryHandler
+                <GetAllDeclarationQuery, GetAllDeclarationQueryResponse, GetAllDeclarationQueryHandler>();
 
             return services;
         }
@@ -22,17 +30,6 @@ namespace Common.Core.CQRS
         public static IServiceCollection AddCommands(this IServiceCollection services)
         {
 
-            //services.AddCommandHandler
-            //    <AddPostCommand, AddPostCommandHandler>();
-
-            //services.AddCommandHandler
-            //    <SendSEOCheckCommand,
-            //    SendSEOCheckCommandHandler>();
-
-
-            //services.AddCommandHandler
-            //    <SendToGrammarCheckerCommand,
-            //    SendToGrammarCheckerCommandHandler>();
 
             return services;
         }
