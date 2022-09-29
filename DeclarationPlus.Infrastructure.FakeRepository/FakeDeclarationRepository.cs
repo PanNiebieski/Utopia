@@ -39,19 +39,29 @@ namespace DeclarationPlus.Infrastructure.FakeRepository
         public async Task SaveAcceptenceAsync(DeclarationId id, AdministratorId administratorId, Decision dec)
         {
             await Task.Delay(500);
-            throw new NotImplementedException();
+
+            var de = declarations.FirstOrDefault(d => d.Id.Value == id.Value);
+
+            de.FinalDecision = dec;
+            
         }
 
-        public async Task SaveEvaluatationAsync(DeclarationId id, DeclarationScoringResult score)
+        public async Task SaveEvaluatationAsync(DeclarationId id, DeclarationMachineResult score)
         {
             await Task.Delay(500);
-            throw new NotImplementedException();
+
+            var de = declarations.FirstOrDefault(d => d.Id.Value == id.Value);
+
+            de.Result = score;
         }
 
         public async Task SaveRejectionAsync(DeclarationId id, AdministratorId administratorId, Decision dec)
         {
             await Task.Delay(500);
-            throw new NotImplementedException();
+
+            var de = declarations.FirstOrDefault(d => d.Id.Value == id.Value);
+
+            de.FinalDecision = dec;
         }
 
 

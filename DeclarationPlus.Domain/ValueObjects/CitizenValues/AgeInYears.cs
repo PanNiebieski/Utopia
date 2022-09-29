@@ -1,4 +1,5 @@
-﻿using Common.Domain.Ddd;
+﻿using Common.Domain;
+using Common.Domain.Ddd;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,6 +31,7 @@ namespace DeclarationPlus.Domain.ValueObjects.CitizenValues
         {
             yield return age;
         }
+
 
         public static bool operator >(AgeInYears one, AgeInYears two) => one.CompareTo(two) > 0;
 

@@ -14,11 +14,11 @@ namespace DeclarationPlus.XUnitTests.DomainTests
         [Fact]
         public void Citizen_Born1976_IsAt2021_45YearsOld()
         {
-            var customer = GivenCitizen()
+            var citizen = GivenCitizen()
                 .BornOn(new DateTime(1976, 6, 26))
                 .Build();
 
-            var ageAt2019 = customer.AgeInYearsAt(new DateTime(2021, 1, 1));
+            var ageAt2019 = citizen.AgeInYearsAt(new DateTime(2021, 1, 1));
 
             ageAt2019.Should().Be(45.Years());
         }
@@ -26,11 +26,11 @@ namespace DeclarationPlus.XUnitTests.DomainTests
         [Fact]
         public void Citizen_Born1976_IsAt2022_46YearsOld()
         {
-            var customer = GivenCitizen()
+            var citizen = GivenCitizen()
                 .BornOn(new DateTime(1976, 6, 26))
                 .Build();
 
-            var ageAt2019 = customer.AgeInYearsAt(new DateTime(2022, 1, 1));
+            var ageAt2019 = citizen.AgeInYearsAt(new DateTime(2022, 1, 1));
 
             ageAt2019.Should().Be(46.Years());
         }
@@ -38,11 +38,11 @@ namespace DeclarationPlus.XUnitTests.DomainTests
         [Fact]
         public void Citizen_Born1976_IsAt2023_47YearsOld()
         {
-            var customer = GivenCitizen()
+            var citzien = GivenCitizen()
                 .BornOn(new DateTime(1976, 6, 26))
                 .Build();
 
-            var ageAt2019 = customer.AgeInYearsAt(new DateTime(2023, 1, 1));
+            var ageAt2019 = citzien.AgeInYearsAt(new DateTime(2023, 1, 1));
 
             ageAt2019.Should().Be(47.Years());
         }
@@ -72,7 +72,7 @@ namespace DeclarationPlus.XUnitTests.DomainTests
             act
                 .Should()
                 .Throw<ArgumentException>()
-                .WithMessage("Birthdate cannot be empty");
+                .WithMessage("NumberOfKids cannot be empty");
         }
 
         [Fact]
@@ -86,7 +86,7 @@ namespace DeclarationPlus.XUnitTests.DomainTests
             act
                 .Should()
                 .Throw<ArgumentException>()
-                .WithMessage("Birthdate cannot be empty");
+                .WithMessage("Name cannot be empty");
         }
     }
 }

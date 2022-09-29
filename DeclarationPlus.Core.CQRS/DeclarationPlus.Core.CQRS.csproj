@@ -8,16 +8,18 @@
 
   <ItemGroup>
     <Folder Include="Administrators\Commands\" />
-    <Folder Include="Administrators\Queries\GetAllAdministrators\" />
-    <Folder Include="Declarations\Commands\AcceptDeclaration\" />
-    <Folder Include="Declarations\Commands\EvaluateDeclaration\" />
-    <Folder Include="Declarations\Commands\RejectDeclaration\" />
     <Folder Include="Territory\Commands\" />
-    <Folder Include="Territory\Queries\GetAllTerriotries\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="11.0.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Common.Core\Common.Core.CQRS.csproj" />
+    <ProjectReference Include="..\DeclarationPlus.Core.Contracts\DeclarationPlus.Core.Contracts.csproj" />
+    <ProjectReference Include="..\DeclarationPlus.Core.Mapper\DeclarationPlus.Core.Mapper.csproj" />
   </ItemGroup>
 
 </Project>

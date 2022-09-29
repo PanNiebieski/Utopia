@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DeclarationPlus.Domain.ValueObjects.Scoring
 {
-    public enum DeclarationMachineScore
+    public enum DeclarationFlag
     {
         None = 0,
         Red = 1, //Rejected

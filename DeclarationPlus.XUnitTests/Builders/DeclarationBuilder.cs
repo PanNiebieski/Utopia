@@ -1,5 +1,6 @@
 ﻿using DeclarationPlus.Core.Scoring;
 using DeclarationPlus.Domain.Entities;
+using DeclarationPlus.Domain.ValueObjects;
 using DeclarationPlus.Domain.ValueObjects.CitizenValues;
 using DeclarationPlus.Domain.ValueObjects.Ids;
 using System;
@@ -26,6 +27,8 @@ namespace DeclarationPlus.XUnitTests.Builders
 
         private Administrator administrator = AdministratorBuilder.GiveAdministrator().Build();
 
+        private DeclarationStatus targetStatus = DeclarationStatus.New;
+
 
         public DeclarationBuilder WithAdministrator(int adminstratorId, int territoryId)
         {
@@ -41,6 +44,13 @@ namespace DeclarationPlus.XUnitTests.Builders
             administratorBuilderAction(adminstratorBuilder);
             administrator = adminstratorBuilder.Build();
 
+            return this;
+        }
+
+
+        public DeclarationBuilder WithAdministrator(Administrator administrator)
+        {
+            this.administrator = administrator;
             return this;
         }
 
@@ -62,14 +72,59 @@ namespace DeclarationPlus.XUnitTests.Builders
             return this;
         }
 
+        public DeclarationBuilder Evaluated()
+        {
+            targetStatus = DeclarationStatus.EvaluatedByMachine;
+            return this;
+        }
+
+        public DeclarationBuilder Rejected()
+        {
+            targetStatus = DeclarationStatus.Rejected;
+            return this;
+        }
+
+        public DeclarationBuilder NotEvaluated()
+        {
+            targetStatus = DeclarationStatus.New;
+            return this;
+        }
+
+        public DeclarationBuilder New()
+        {
+            targetStatus = DeclarationStatus.New;
+            return this;
+        }
+
+        public DeclarationBuilder Accepted()
+        {
+            targetStatus = DeclarationStatus.AcceptedByAdministrator;
+            return this;
+        }
+
 
         public Declaration Build()
         {
             var cfs = new Declaration
             (
                citizen, declarationId, territory
-
             );
+
+            if (targetStatus == DeclarationStatus.EvaluatedByMachine)
+            {
+                cfs.Evaluate(scoringRulesFactory.DefaultSet);
+            }
+
+            if (targetStatus == DeclarationStatus.AcceptedByAdministrator)
+            {
+                cfs.Evaluate(scoringRulesFactory.DefaultSet);
+                cfs.Accept(administrator);
+            }
+
+            if (targetStatus == DeclarationStatus.Rejected)
+            {
+                cfs.Reject(administrator);
+            }
 
             return cfs;
         }

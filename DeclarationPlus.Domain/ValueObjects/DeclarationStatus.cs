@@ -10,7 +10,7 @@ namespace DeclarationPlus.Domain.ValueObjects
     {
         New = 0,
         EvaluatedByMachine = 1,
-        AcceptedByJudge = 2,
+        AcceptedByAdministrator = 2,
         Rejected = 5
     }
 }

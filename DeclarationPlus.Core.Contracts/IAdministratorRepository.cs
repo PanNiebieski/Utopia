@@ -4,6 +4,7 @@ using DeclarationPlus.Domain.ValueObjects.Ids;
 using DeclarationPlus.Domain.ValueObjects.Scoring;
 using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +14,8 @@ namespace DeclarationPlus.Core.Contracts
     public interface IAdministratorRepository
     {
         Task<Administrator> GetByIdAsync(AdministratorId id);
+
+        Task<ImmutableArray<Administrator>> GetAllAsync();
 
     }
 }

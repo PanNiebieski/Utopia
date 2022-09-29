@@ -8,10 +8,10 @@ namespace DeclarationPlus.XUnitTests
     {
 
         [Fact]
-        public void Citizen_With_4_Kids_ShouldHave100Points_With_KidsScoringSocialScore()
+        public void Citizen_With_5_Kids_ShouldHave100Points_With_KidsScoringSocialScore()
         {
             var dec = GivenDeclaration().WithCitizen(
-                c => c.WithKids(4))
+                c => c.WithKids(5))
                 .Build();
 
             var rule = new KidsScoringSocialScore();

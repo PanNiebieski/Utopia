@@ -22,5 +22,12 @@ namespace DeclarationPlus.Domain.Entities
             Id = id;
             Territory = territory;
         }
+
+        public bool CanAccept(TerritoryId territoryId)
+        {
+            if (Territory != null)
+                return territoryId == Territory.Id;
+            return false;
+        }
     }
 }

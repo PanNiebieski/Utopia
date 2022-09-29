@@ -1,4 +1,6 @@
-﻿using DeclarationPlus.Domain.Ddd;
+﻿using Common.Domain;
+using DeclarationPlus.Domain.Ddd;
+using DeclarationPlus.Domain.Scoring;
 using DeclarationPlus.Domain.ValueObjects;
 using DeclarationPlus.Domain.ValueObjects.CitizenValues;
 using DeclarationPlus.Domain.ValueObjects.Ids;
@@ -17,9 +19,9 @@ namespace DeclarationPlus.Domain.Entities
     {
         public Citizen Citizen { get; set; }
 
-        public DeclarationScoringResult Result { get; set; }
+        public DeclarationMachineResult? Result { get; set; }
 
-        public Decision FinalDecision { get; set; }
+        public Decision? FinalDecision { get; set; }
 
         public Territory Territory { get; set; }
 
@@ -39,6 +41,68 @@ namespace DeclarationPlus.Domain.Entities
             Id = declarationId;
             Citizen = citizen;
             Territory = territory;
+        }
+
+        public void Evaluate(ScoringRules rules)
+        {
+            if (Status != DeclarationStatus.New)
+            {
+                throw new ApplicationException("Cannot accept application that isn't new");
+            }
+
+            Result = rules.Evaluate(this);
+
+            if (!Result.ScoringFlag.IsRed())
+            {
+                Status = DeclarationStatus.EvaluatedByMachine;
+            }
+            else
+            {
+                Status = DeclarationStatus.Rejected;
+            }
+        }
+
+        public void Reject(Administrator decisionBy)
+        {
+            if (Status == DeclarationStatus.Rejected ||
+                Status == DeclarationStatus.AcceptedByAdministrator)
+            {
+                throw new ApplicationException("Cannot reject application that is already accepted or rejected");
+            }
+
+            if (!decisionBy.CanAccept(this.Territory.Id))
+            {
+                throw new ApplicationException("Administrator is from diffrent Territory. Can't Accept");
+            }
+
+            Status = DeclarationStatus.Rejected;
+            FinalDecision = new Decision(AppTime.Now(), decisionBy);
+        }
+
+        public void Accept(Administrator decisionBy)
+        {
+            if (Status == DeclarationStatus.AcceptedByAdministrator)
+            {
+                throw new ApplicationException("You already Accepted this Declaration");
+            }
+
+            if (Status == DeclarationStatus.Rejected)
+            {
+                throw new ApplicationException("Cannot accept application that is already rejected");
+            }
+
+            if (Result == null)
+            {
+                throw new ApplicationException("Cannot accept application before scoring");
+            }
+
+            if (!decisionBy.CanAccept(this.Territory.Id))
+            {
+                throw new ApplicationException("Administrator is from diffrent territory. Can't Accept");
+            }
+
+            Status = DeclarationStatus.AcceptedByAdministrator;
+            FinalDecision = new Decision(AppTime.Now(), decisionBy);
         }
     }
 }

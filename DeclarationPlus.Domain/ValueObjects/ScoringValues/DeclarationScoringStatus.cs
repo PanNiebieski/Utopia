@@ -8,68 +8,68 @@ using System.Threading.Tasks;
 
 namespace DeclarationPlus.Domain.ValueObjects.Scoring
 {
-    public class DeclarationScoringStatus : ValueObject<DeclarationScoringStatus>
+    public class DeclarationScoringFlag : ValueObject<DeclarationScoringFlag>
     {
 
-        public DeclarationMachineScore Score { get; set; }
+        public DeclarationFlag Flag { get; set; }
 
         public string RejectExplanation { get; set; }
         public string WarringExplanation { get; set; }
 
-        public DeclarationScoringStatus(DeclarationMachineScore score,
+        public DeclarationScoringFlag(DeclarationFlag score,
             string rejectexlanation)
         {
-            Score = score;
+            Flag = score;
             RejectExplanation = rejectexlanation;
         }
 
-        public DeclarationScoringStatus(DeclarationMachineScore score,
+        public DeclarationScoringFlag(DeclarationFlag score,
     string rejectExplanation, string warringExplanation)
         {
-            Score = score;
+            Flag = score;
             RejectExplanation = rejectExplanation;
             WarringExplanation = warringExplanation;
         }
 
         //To satisfy EF Core
-        public DeclarationScoringStatus()
+        public DeclarationScoringFlag()
         {
         }
 
         protected override IEnumerable<object> GetAttributesToIncludeInEqualityCheck()
         {
-            yield return Score;
+            yield return Flag;
             yield return RejectExplanation;
         }
 
-        public static DeclarationScoringStatus Green()
+        public static DeclarationScoringFlag Green()
         {
-            return new DeclarationScoringStatus(DeclarationMachineScore.Green, "", "");
+            return new DeclarationScoringFlag(DeclarationFlag.Green, "", "");
         }
 
-        public static DeclarationScoringStatus Red(string[] messages)
+        public static DeclarationScoringFlag Red(string[] messages)
         {
-            return new DeclarationScoringStatus(DeclarationMachineScore.Red, string.Join(Environment.NewLine, messages), "");
+            return new DeclarationScoringFlag(DeclarationFlag.Red, string.Join(Environment.NewLine, messages), "");
         }
 
-        public static DeclarationScoringStatus Yellow(string[] messages)
+        public static DeclarationScoringFlag Yellow(string[] messages)
         {
-            return new DeclarationScoringStatus(DeclarationMachineScore.Yellow, "", string.Join(Environment.NewLine, messages));
+            return new DeclarationScoringFlag(DeclarationFlag.Yellow, "", string.Join(Environment.NewLine, messages));
         }
 
         public bool IsRed()
         {
-            return Score == DeclarationMachineScore.Red;
+            return Flag == DeclarationFlag.Red;
         }
 
         public bool IsYellow()
         {
-            return Score == DeclarationMachineScore.Yellow;
+            return Flag == DeclarationFlag.Yellow;
         }
 
         public bool IsGreen()
         {
-            return Score == DeclarationMachineScore.Green;
+            return Flag == DeclarationFlag.Green;
         }
     }
 }

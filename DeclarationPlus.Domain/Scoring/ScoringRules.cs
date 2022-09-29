@@ -23,7 +23,7 @@ namespace DeclarationPlus.Domain.Scoring
             this.socialscorerules = socialscorerules;
         }
 
-        public DeclarationScoringResult Evaluate(Declaration  dec)
+        public DeclarationMachineResult Evaluate(Declaration  dec)
         {
             //int score = 0;
             //foreach (var item in socialscorerules)
@@ -60,7 +60,7 @@ namespace DeclarationPlus.Domain.Scoring
             DeclarationSocialScore declarationSocialScore =
                 new DeclarationSocialScore(score);
 
-            DeclarationScoringStatus status = DeclarationScoringStatus.Green();
+            DeclarationScoringFlag status = DeclarationScoringFlag.Green();
 
             //Analogicznie napisać dla warringrules
 
@@ -69,12 +69,12 @@ namespace DeclarationPlus.Domain.Scoring
                 .ToList();
 
             if (brokenRules.Any())
-                status = DeclarationScoringStatus.Red
+                status = DeclarationScoringFlag.Red
                     (brokenRules.Select(r => r.Message).
                     ToArray());
 
             return 
-                new DeclarationScoringResult(status, declarationSocialScore);
+                new DeclarationMachineResult(status, declarationSocialScore);
         }
     }
 }

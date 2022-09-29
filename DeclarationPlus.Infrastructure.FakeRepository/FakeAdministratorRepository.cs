@@ -10,16 +10,16 @@ namespace DeclarationPlus.Infrastructure.FakeRepository
 
         public FakeAdministratorRepository()
         {
-            administrators.Add(new Administrator(, new AdministratorId(1));
-            administrators.Add(new Administrator(, new AdministratorId(2));
-            administrators.Add(new Administrator(, new AdministratorId(3));
-            administrators.Add(new Administrator(, new AdministratorId(4));
-            administrators.Add(new Administrator(, new AdministratorId(5));
-            administrators.Add(new Administrator(, new AdministratorId(6));
-            administrators.Add(new Administrator(, new AdministratorId(7));
-            administrators.Add(new Administrator(, new AdministratorId(8));
-            administrators.Add(new Administrator(, new AdministratorId(9));
-            administrators.Add(new Administrator(, new AdministratorId(10));
+            administrators.Add(new Administrator(new Territory(new TerritoryId(1)), new AdministratorId(1)));
+            administrators.Add(new Administrator(new Territory(new TerritoryId(1)), new AdministratorId(2)));
+            administrators.Add(new Administrator(new Territory(new TerritoryId(1)), new AdministratorId(3)));
+            administrators.Add(new Administrator(new Territory(new TerritoryId(1)), new AdministratorId(4)));
+            administrators.Add(new Administrator(new Territory(new TerritoryId(2)), new AdministratorId(5)));
+            administrators.Add(new Administrator(new Territory(new TerritoryId(2)), new AdministratorId(6)));
+            administrators.Add(new Administrator(new Territory(new TerritoryId(2)), new AdministratorId(7)));
+            administrators.Add(new Administrator(new Territory(new TerritoryId(3)), new AdministratorId(8)));
+            administrators.Add(new Administrator(new Territory(new TerritoryId(3)), new AdministratorId(9)));
+            administrators.Add(new Administrator(new Territory(new TerritoryId(3)), new AdministratorId(10)));
         }
 
 

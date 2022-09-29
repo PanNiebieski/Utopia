@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DeclarationPlus.Core.CQRS.Declarations.Queries.GetAllDeclaration
+namespace DeclarationPlus.Core.CQRS.Declarations.Commands.EvaluateDeclaration
 {
-    public record GetAllDeclarationQuery
+    internal class EvaluateDeclarationCommand
     {
     }
 }

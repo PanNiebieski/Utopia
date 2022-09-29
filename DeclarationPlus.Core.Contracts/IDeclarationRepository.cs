@@ -20,7 +20,7 @@ namespace DeclarationPlus.Core.Contracts
         Task<DeclarationId> SubmitAsync(Declaration declaration);
 
         Task SaveEvaluatationAsync(DeclarationId id,
-            DeclarationScoringResult score);
+            DeclarationMachineResult score);
 
         Task SaveAcceptenceAsync(DeclarationId id, AdministratorId administratorId,
             Decision dec);

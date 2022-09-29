@@ -15,6 +15,13 @@ namespace DeclarationPlus.Infrastructure.FakeRepository
     {
         List<Territory> territories = new List<Territory>();
 
+        public FakeTerritoryRepository()
+        {
+            territories.Add(new Territory(new TerritoryId(1)));
+            territories.Add(new Territory(new TerritoryId(2)));
+            territories.Add(new Territory(new TerritoryId(3)));
+        }
+
         public async Task<ImmutableArray<Territory>> GetAllAsync()
         {
             await Task.Delay(500);

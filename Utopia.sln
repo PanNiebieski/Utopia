@@ -31,11 +31,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeclarationPlus.Core.Scorin
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.Core.CQRS", "Common.Core\Common.Core.CQRS.csproj", "{EF0A9BA7-A931-4881-A1BC-4A3C5B0645B0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeclarationPlus.XUnitTests", "DeclarationPlus.XUnitTests\DeclarationPlus.XUnitTests.csproj", "{341946DF-15F6-495C-82B2-83C26A9999F9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeclarationPlus.XUnitTests", "DeclarationPlus.XUnitTests\DeclarationPlus.XUnitTests.csproj", "{341946DF-15F6-495C-82B2-83C26A9999F9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeclarationPlus.Infrastructure.Persistence.FakeRepository", "DeclarationPlus.Infrastructure.FakeRepository\DeclarationPlus.Infrastructure.Persistence.FakeRepository.csproj", "{45330BC0-C800-418D-A9FD-9C8B674120CA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeclarationPlus.Infrastructure.Persistence.FakeRepository", "DeclarationPlus.Infrastructure.FakeRepository\DeclarationPlus.Infrastructure.Persistence.FakeRepository.csproj", "{45330BC0-C800-418D-A9FD-9C8B674120CA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeclarationPlus.Api", "DeclarationPlus\DeclarationPlus.Api.csproj", "{46F79E7C-055A-4F3E-BA5D-F389DDC1D209}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeclarationPlus.Api", "DeclarationPlus\DeclarationPlus.Api.csproj", "{46F79E7C-055A-4F3E-BA5D-F389DDC1D209}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeclarationPlus.Core.Mapper", "DeclarationPlus.Core.Mapper\DeclarationPlus.Core.Mapper.csproj", "{E025F26B-207F-492F-9C8F-749D91A4DC70}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -83,6 +85,10 @@ Global
 		{46F79E7C-055A-4F3E-BA5D-F389DDC1D209}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{46F79E7C-055A-4F3E-BA5D-F389DDC1D209}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{46F79E7C-055A-4F3E-BA5D-F389DDC1D209}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E025F26B-207F-492F-9C8F-749D91A4DC70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E025F26B-207F-492F-9C8F-749D91A4DC70}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E025F26B-207F-492F-9C8F-749D91A4DC70}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E025F26B-207F-492F-9C8F-749D91A4DC70}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -103,6 +109,7 @@ Global
 		{341946DF-15F6-495C-82B2-83C26A9999F9} = {B918FE0D-F4BE-45CC-8E65-FA3D21FD5C2B}
 		{45330BC0-C800-418D-A9FD-9C8B674120CA} = {00F6AF97-A4CB-4D86-89A4-5F80FB8CF4AF}
 		{46F79E7C-055A-4F3E-BA5D-F389DDC1D209} = {AD2B6A60-F9C5-4470-B6B9-116E768936E3}
+		{E025F26B-207F-492F-9C8F-749D91A4DC70} = {95B45F39-9DF3-493E-8A9F-41E5600D3C55}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C62FDD31-1581-4623-9510-A9973CB386FC}

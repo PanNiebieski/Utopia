@@ -10,6 +10,11 @@ namespace Common.Domain.Ddd
     {
         protected abstract IEnumerable<object> GetAttributesToIncludeInEqualityCheck();
 
+        protected virtual ValidationMessage CheckValidation()
+        {
+            return ValidationMessage.Valid();
+        }
+
         public override bool Equals(object other)
         {
             return Equals(other as T);
@@ -42,5 +47,7 @@ namespace Common.Domain.Ddd
 
             return hash;
         }
+
+
     }
 }

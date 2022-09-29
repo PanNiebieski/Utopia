@@ -9,29 +9,29 @@ using static System.Formats.Asn1.AsnWriter;
 
 namespace DeclarationPlus.Domain.ValueObjects.Scoring
 {
-    public class DeclarationScoringResult : ValueObject<Citizen>
+    public class DeclarationMachineResult : ValueObject<Citizen>
     {
-        public DeclarationScoringStatus DeclarationScoringStatus { get; set; }
+        public DeclarationScoringFlag ScoringFlag { get; set; }
 
-        public DeclarationSocialScore DeclarationSocialScore { get; set; }
+        public DeclarationSocialScore SocialScore { get; set; }
 
-        public DeclarationScoringResult(DeclarationScoringStatus status, DeclarationSocialScore score)
+        public DeclarationMachineResult(DeclarationScoringFlag status, DeclarationSocialScore score)
         {
             if (status == null)
                 throw new ArgumentException("Name cannot be null");
             if (score == default)
                 throw new ArgumentException("Birthdate cannot be empty");
 
-            DeclarationScoringStatus = status;
-            DeclarationSocialScore = score;
+            ScoringFlag = status;
+            SocialScore = score;
         }
 
         protected override IEnumerable<object> GetAttributesToIncludeInEqualityCheck()
         {
             return new List<object>
             {
-                DeclarationScoringStatus,
-                DeclarationSocialScore,
+                ScoringFlag,
+                SocialScore,
             };
         }
     }

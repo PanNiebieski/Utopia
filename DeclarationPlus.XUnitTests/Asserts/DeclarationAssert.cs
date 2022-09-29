@@ -27,7 +27,7 @@ namespace DeclarationPlus.XUnitTests.Asserts
 
         public AndConstraint<DeclarationAssert> BeAccepted()
         {
-            return BeInStatus(DeclarationStatus.AcceptedByJudge);
+            return BeInStatus(DeclarationStatus.AcceptedByAdministrator);
         }
 
 
@@ -48,29 +48,29 @@ namespace DeclarationPlus.XUnitTests.Asserts
 
         public AndConstraint<DeclarationAssert> ScoreIsNull()
         {
-            Subject?.Result.DeclarationScoringStatus.Should().BeNull();
+            Subject?.Result.Should().BeNull();
             return new AndConstraint<DeclarationAssert>(this);
         }
 
-        public AndConstraint<DeclarationAssert> FlagIs(DeclarationMachineScore expectedScore)
+        public AndConstraint<DeclarationAssert> FlagIs(DeclarationFlag expectedScore)
         {
-            Subject?.Result.DeclarationScoringStatus.Should().Be(expectedScore);
+            Subject?.Result.ScoringFlag.Flag.Should().Be(expectedScore);
             return new AndConstraint<DeclarationAssert>(this);
         }
 
         public AndConstraint<DeclarationAssert> HaveRedScore()
         {
-            return FlagIs(DeclarationMachineScore.Red);
+            return FlagIs(DeclarationFlag.Red);
         }
 
         public AndConstraint<DeclarationAssert> HaveGreenScore()
         {
-            return FlagIs(DeclarationMachineScore.Green);
+            return FlagIs(DeclarationFlag.Green);
         }
 
         public AndConstraint<DeclarationAssert> HaveYellowScore()
         {
-            return FlagIs(DeclarationMachineScore.Yellow);
+            return FlagIs(DeclarationFlag.Yellow);
         }
 
         protected override string Identifier => "CallForSpeechAssert";
