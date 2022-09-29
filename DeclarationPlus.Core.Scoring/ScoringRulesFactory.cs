@@ -11,11 +11,6 @@ namespace DeclarationPlus.Core.Scoring
 {
     public class ScoringRulesFactory : IScoringRulesFactory
     {
-        public ScoringRulesFactory()
-        {
-
-        }
-
         public ScoringRules DefaultSet => new ScoringRules(
         new List<IScoringRejectRule>
         {

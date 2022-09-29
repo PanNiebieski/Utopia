@@ -7,19 +7,24 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Administrators\Commands\" />
-    <Folder Include="Territory\Commands\" />
+    <Folder Include="Functions\Administrators\Commands\" />
+    <Folder Include="Functions\Territory\Commands\" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="11.0.1" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="6.0.0-preview.4.21253.5" />
+    <PackageReference Include="Microsoft.AspNetCore.Routing.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Primitives" Version="7.0.0-rc.1.22426.10" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Common.Core\Common.Core.CQRS.csproj" />
     <ProjectReference Include="..\DeclarationPlus.Core.Contracts\DeclarationPlus.Core.Contracts.csproj" />
     <ProjectReference Include="..\DeclarationPlus.Core.Mapper\DeclarationPlus.Core.Mapper.csproj" />
+    <ProjectReference Include="..\DeclarationPlus.Core.Scoring\DeclarationPlus.Core.Scoring.csproj" />
   </ItemGroup>
 
 </Project>

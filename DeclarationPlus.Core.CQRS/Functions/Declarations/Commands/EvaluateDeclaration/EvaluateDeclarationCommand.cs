@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace DeclarationPlus.Core.CQRS.Declarations.Commands.EvaluateDeclaration
 {
-    internal class EvaluateDeclarationCommandResponse
+    public record EvaluateDeclarationCommand(int Id)
     {
+     
     }
 }

@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace DeclarationPlus.Core.Mapper.Dto
 {
-    public class CitizenDto
+    public class NameDto
     {
+        public string First { get; set; }
+        public string Last { get; set; }
     }
 }

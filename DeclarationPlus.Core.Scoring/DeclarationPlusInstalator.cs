@@ -2,18 +2,16 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DeclarationPlus.Core.Mapper
+namespace DeclarationPlus.Core.Scoring
 {
     public static partial class DeclarationPlusInstalator
     {
-
-        public static IServiceCollection AddMapping(this IServiceCollection services)
+        public static IServiceCollection AddScoringRulesFactory(this IServiceCollection services)
         {
-   
+            services.AddSingleton<IScoringRulesFactory, ScoringRulesFactory>();
 
             return services;
         }

@@ -19,11 +19,11 @@ namespace DeclarationPlus.Domain.Entities
     {
         public Citizen Citizen { get; set; }
 
-        public DeclarationMachineResult? Result { get; set; }
+        public Territory Territory { get; set; }
+
+        public DeclarationMachineResult? EvaluationResult { get; set; }
 
         public Decision? FinalDecision { get; set; }
-
-        public Territory Territory { get; set; }
 
         public DeclarationStatus Status { get; private set; }
 
@@ -43,6 +43,24 @@ namespace DeclarationPlus.Domain.Entities
             Territory = territory;
         }
 
+        public Declaration(Citizen citizen, Territory territory)
+        {
+            if (citizen == null)
+                throw new ArgumentException("citizen cannot be null");
+            if (territory == null)
+                throw new ArgumentException("territory cannot be null");
+
+            Citizen = citizen;
+            Territory = territory;
+        }
+
+        //needed for automapper
+        //need for EF Core propably
+        public Declaration()
+        {
+
+        }
+
         public void Evaluate(ScoringRules rules)
         {
             if (Status != DeclarationStatus.New)
@@ -50,9 +68,9 @@ namespace DeclarationPlus.Domain.Entities
                 throw new ApplicationException("Cannot accept application that isn't new");
             }
 
-            Result = rules.Evaluate(this);
+            EvaluationResult = rules.Evaluate(this);
 
-            if (!Result.ScoringFlag.IsRed())
+            if (!EvaluationResult.ScoringFlag.IsRed())
             {
                 Status = DeclarationStatus.EvaluatedByMachine;
             }
@@ -91,7 +109,7 @@ namespace DeclarationPlus.Domain.Entities
                 throw new ApplicationException("Cannot accept application that is already rejected");
             }
 
-            if (Result == null)
+            if (EvaluationResult == null)
             {
                 throw new ApplicationException("Cannot accept application before scoring");
             }

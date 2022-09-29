@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using DeclarationPlus.Core.Mapper.Dto;
 using DeclarationPlus.Domain.Entities;
+using DeclarationPlus.Domain.ValueObjects.CitizenValues;
 using DeclarationPlus.Domain.ValueObjects.Ids;
 using System.Net;
 
@@ -27,7 +28,15 @@ namespace DeclarationPlus.Core.Mapper
                 .ForMember(s => s.Id, o => o.MapFrom(k => new TerritoryId(k.Id)));
 
             CreateMap<Declaration, DeclarationViewModel>().ConvertUsing(new DeclarationViewModelTypeConverter());
-         
+
+
+            CreateMap<int, NumberOfKids>()
+                .ConstructUsing(k => new NumberOfKids(k));
+
+            CreateMap<NameDto, Name>();
+
+            CreateMap<CitizenDto, Citizen>();
+
 
         }
 

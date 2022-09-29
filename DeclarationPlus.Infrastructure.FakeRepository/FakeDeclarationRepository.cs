@@ -44,6 +44,7 @@ namespace DeclarationPlus.Infrastructure.FakeRepository
         public async Task<DeclarationId> SubmitAsync(Declaration declaration)
         {
             await Task.Delay(500);
+            declaration.Id = new DeclarationId(declarations.Count() + 1);
             declarations.Add(declaration);
             return declaration.Id;
         }
@@ -64,7 +65,7 @@ namespace DeclarationPlus.Infrastructure.FakeRepository
 
             var de = declarations.FirstOrDefault(d => d.Id.Value == id.Value);
 
-            de.Result = score;
+            de.EvaluationResult = score;
         }
 
         public async Task SaveRejectionAsync(DeclarationId id, AdministratorId administratorId, Decision dec)

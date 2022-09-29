@@ -9,7 +9,7 @@ namespace DeclarationPlus.Domain.Ddd
 {
     public abstract class Entity<T>
     {
-        public T Id { get; protected set; }
+        public T Id { get; set; }
         public int Version { get; set; }
 
         //public string CreatedBy { get; set; }
@@ -17,7 +17,7 @@ namespace DeclarationPlus.Domain.Ddd
         //public string LastModifiedBy { get; set; }
         //public DateTime? LastModifiedDate { get; set; }
 
-        protected virtual ValidationStatus CheckValidation()
+        public virtual ValidationStatus CheckValidation()
         {
             return ValidationStatus.Valid();
         }

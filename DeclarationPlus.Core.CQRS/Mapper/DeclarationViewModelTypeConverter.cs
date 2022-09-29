@@ -14,10 +14,10 @@ namespace DeclarationPlus.Core.Mapper
 
             declarationViewModel.Status = (int)source.Status;
 
-            if (source.Result != null)
+            if (source.EvaluationResult != null)
             {
-                declarationViewModel.Flag = (int)source.Result.ScoringFlag.Flag;
-                declarationViewModel.SocialScore = source.Result.SocialScore.SocialScore;
+                declarationViewModel.Flag = (int)source.EvaluationResult.ScoringFlag.Flag;
+                declarationViewModel.SocialScore = source.EvaluationResult.SocialScore.SocialScore;
             }
 
             return declarationViewModel;

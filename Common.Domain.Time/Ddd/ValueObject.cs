@@ -10,7 +10,7 @@ namespace Common.Domain.Ddd
     {
         protected abstract IEnumerable<object> GetAttributesToIncludeInEqualityCheck();
 
-        protected virtual ValidationStatus CheckValidation()
+        public virtual ValidationStatus CheckValidation()
         {
             return ValidationStatus.Valid();
         }

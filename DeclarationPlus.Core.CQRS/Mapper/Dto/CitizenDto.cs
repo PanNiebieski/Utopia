@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace DeclarationPlus.Core.Mapper.Dto
 {
-    public class NameDto
+    public class CitizenDto
     {
+        public NameDto Name { get; set; }
+
+        public DateTime Birthdate { get; set; }
+
+        public int NumberOfKids { get; set; }
     }
 }

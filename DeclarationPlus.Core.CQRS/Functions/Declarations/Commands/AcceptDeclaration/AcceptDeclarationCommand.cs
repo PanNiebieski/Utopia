@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DeclarationPlus.Core.CQRS.Declarations.Commands.AcceptDeclaration
 {
-    public class AcceptDeclarationCommand
+    public record AcceptDeclarationCommand(int DeclarationId, int AdministratorId)
     {
     }
 }

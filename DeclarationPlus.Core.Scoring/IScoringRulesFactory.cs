@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace DeclarationPlus.Core.Scoring
 {
-    public class IScoringRulesFactory
+    public interface IScoringRulesFactory
     {
-        public ScoringRules DefaultSet { get; }
+        ScoringRules DefaultSet { get; }
     }
 }

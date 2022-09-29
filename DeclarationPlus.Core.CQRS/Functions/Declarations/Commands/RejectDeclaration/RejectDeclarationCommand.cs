@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DeclarationPlus.Core.CQRS.Declarations.Commands.RejectDeclaration
 {
-    internal class RejectDeclarationCommandResponse
+    public record RejectDeclarationCommand(int DeclarationId, int AdministratorId)
     {
     }
 }

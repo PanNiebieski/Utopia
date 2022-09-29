@@ -48,13 +48,13 @@ namespace DeclarationPlus.XUnitTests.Asserts
 
         public AndConstraint<DeclarationAssert> ScoreIsNull()
         {
-            Subject?.Result.Should().BeNull();
+            Subject?.EvaluationResult.Should().BeNull();
             return new AndConstraint<DeclarationAssert>(this);
         }
 
         public AndConstraint<DeclarationAssert> FlagIs(DeclarationFlag expectedScore)
         {
-            Subject?.Result.ScoringFlag.Flag.Should().Be(expectedScore);
+            Subject?.EvaluationResult.ScoringFlag.Flag.Should().Be(expectedScore);
             return new AndConstraint<DeclarationAssert>(this);
         }
 

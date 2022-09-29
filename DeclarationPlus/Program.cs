@@ -1,12 +1,15 @@
-var builder = WebApplication.CreateBuilder(args);
+using DeclarationPlus.Core.Scoring;
+using DeclarationPlus.Domain.Entities;
+using DeclarationPlus.Domain.ValueObjects.Ids;
 
+var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-
 builder.Services.AddDeclarationPlusFakeRepositoriesServices(builder.Configuration);
 builder.Services.AddMapping();
+builder.Services.AddScoringRulesFactory();
 builder.Services.AddQueries();
 builder.Services.AddCommands();
 
@@ -36,26 +39,23 @@ app.MapGet("/declaration/getAllDeclarations", HandlAllDeclarations)
     .Produces(StatusCodes.Status400BadRequest)
     .Produces(StatusCodes.Status404NotFound);
 
-
-app.MapPost("/declaration/submitDeclaration", HandlAllDeclarations)
+app.MapPost("/declaration/submitDeclaration", HandleSubmitDeclaration)
     .Produces(StatusCodes.Status200OK)
-    .Produces(StatusCodes.Status400BadRequest)
-    .Produces(StatusCodes.Status404NotFound);
+    .Produces(StatusCodes.Status400BadRequest);
 
-app.MapPost("/declaration/AcceptDeclaration", HandlAllDeclarations)
+app.MapPost("/declaration/AcceptDeclaration", HandleAcceptDeclaration)
     .Produces(StatusCodes.Status200OK)
-    .Produces(StatusCodes.Status400BadRequest)
-    .Produces(StatusCodes.Status404NotFound);
+    .Produces(StatusCodes.Status400BadRequest);
 
-app.MapPost("/declaration/EvaluateDeclaration", HandlAllDeclarations)
-    .Produces(StatusCodes.Status200OK)
-    .Produces(StatusCodes.Status400BadRequest)
-    .Produces(StatusCodes.Status404NotFound);
 
-app.MapPost("/declaration/RejectDeclaration", HandlAllDeclarations)
+app.MapPost("/declaration/EvaluateDeclaration", HandleEvaluateDeclaration)
     .Produces(StatusCodes.Status200OK)
-    .Produces(StatusCodes.Status400BadRequest)
-    .Produces(StatusCodes.Status404NotFound);
+    .Produces(StatusCodes.Status400BadRequest);
+
+app.MapPost("/declaration/RejectDeclaration", HandleRejectDeclaration)
+    .Produces(StatusCodes.Status200OK)
+    .Produces(StatusCodes.Status400BadRequest);
+
 
 app.Run();
 
@@ -106,4 +106,65 @@ async ValueTask<IResult> HandlAllDeclarations(
         return Results.BadRequest();
 
     return Results.Ok(result);
+}
+
+async ValueTask<IResult> HandleSubmitDeclaration(
+    [FromServices] CommandHandler<SubmitDeclarationCommand, SubmitDeclarationCommandResponse> commandH,
+    SubmitDeclarationCommand command,
+    CancellationToken ct
+)
+{
+    var result = await commandH(command,ct);
+
+    if (result.Success)
+        return Results.Ok(result.Value);
+    else
+        return Results.BadRequest(result.MessageError);
+
+}
+
+
+async ValueTask<IResult> HandleRejectDeclaration(
+    [FromServices] CommandHandler<RejectDeclarationCommand, RejectDeclarationCommandResponse> commandH,
+    int declarationId,
+    int administratorId,
+    CancellationToken ct
+)
+{
+    var result = await commandH(new RejectDeclarationCommand(declarationId, administratorId),ct);
+
+    if (result.Success)
+        return Results.NoContent();
+    else
+        return Results.BadRequest(result.Message);
+}
+
+async ValueTask<IResult> HandleEvaluateDeclaration(
+    [FromServices] CommandHandler<EvaluateDeclarationCommand, EvaluateDeclarationCommandResponse> commandH,
+    int declarationId,
+CancellationToken ct
+)
+{
+    var result = await commandH(new EvaluateDeclarationCommand(declarationId), ct);
+
+    if (result.Success)
+        return Results.NoContent();
+    else
+        return Results.BadRequest(result.Message);
+
+}
+
+async ValueTask<IResult> HandleAcceptDeclaration(
+    [FromServices] CommandHandler<AcceptDeclarationCommand, AcceptDeclarationCommandResponse> commandH,
+    int declarationId,
+    int administratorId,
+    CancellationToken ct
+)
+{
+    var result = await commandH(new AcceptDeclarationCommand(declarationId, administratorId), ct);
+
+    if (result.Success)
+        return Results.NoContent();
+    else
+        return Results.BadRequest(result.Message);
 }

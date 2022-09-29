@@ -6,3 +6,7 @@ global using DeclarationPlus.Core.Mapper;
 global using DeclarationPlus.Infrastructure.FakeRepository;
 global using Microsoft.AspNetCore.Mvc;
 global using Microsoft.Extensions.Hosting;
+global using DeclarationPlus.Core.CQRS.Declarations.Commands.AcceptDeclaration;
+global using DeclarationPlus.Core.CQRS.Declarations.Commands.EvaluateDeclaration;
+global using DeclarationPlus.Core.CQRS.Declarations.Commands.RejectDeclaration;
+global using DeclarationPlus.Core.CQRS.Declarations.Commands.SubmitDeclaration;

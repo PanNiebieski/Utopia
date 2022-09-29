@@ -24,16 +24,18 @@ namespace Common.Core.CQRS
         //    return services;
         //}
 
-        public static IServiceCollection AddCommandHandler<TCommand, TResult,TCommandHandler>(
+
+
+        public static IServiceCollection AddCommandHandler<TCommand, TResult, TCommandHandler>(
             this IServiceCollection services
             ) where TCommandHandler : class, ICommandHandler<TCommand, TResult>
         {
-
-            services.AddTransient<ICommandHandler<TCommand, TResult>, TCommandHandler>()
-                    .AddTransient<CommandHandler<TCommand, TResult>>(
-                        sp => sp.GetRequiredService
-                        <ICommandHandler<TCommand, TResult>>().Handle
-                );
+            services
+                .AddTransient<ICommandHandler<TCommand, TResult>, TCommandHandler>()
+                .AddTransient<CommandHandler<TCommand, TResult>>(
+                    sp => sp.GetRequiredService<ICommandHandler<TCommand, TResult>>
+                    ().Handle
+            );
 
             return services;
         }
