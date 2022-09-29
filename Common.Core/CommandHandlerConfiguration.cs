@@ -9,16 +9,30 @@ namespace Common.Core.CQRS
 {
     public static class CommandHandlerConfiguration
     {
-        public static IServiceCollection AddCommandHandler
-            <TCommand, TCommandHandler>(
+        //public static IServiceCollection AddCommandHandler
+        //    <TCommand, TCommandHandler>(
+        //    this IServiceCollection services
+        //) where TCommandHandler : class, ICommandHandler<TCommand>
+        //{
+
+        //    services.AddTransient<ICommandHandler<TCommand>, TCommandHandler>()
+        //            .AddTransient<CommandHandler<TCommand>>(
+        //                sp => sp.GetRequiredService
+        //                <ICommandHandler<TCommand>>().Handle
+        //        );
+
+        //    return services;
+        //}
+
+        public static IServiceCollection AddCommandHandler<TCommand, TResult,TCommandHandler>(
             this IServiceCollection services
-        ) where TCommandHandler : class, ICommandHandler<TCommand>
+            ) where TCommandHandler : class, ICommandHandler<TCommand, TResult>
         {
 
-            services.AddTransient<ICommandHandler<TCommand>, TCommandHandler>()
-                    .AddTransient<CommandHandler<TCommand>>(
+            services.AddTransient<ICommandHandler<TCommand, TResult>, TCommandHandler>()
+                    .AddTransient<CommandHandler<TCommand, TResult>>(
                         sp => sp.GetRequiredService
-                        <ICommandHandler<TCommand>>().Handle
+                        <ICommandHandler<TCommand, TResult>>().Handle
                 );
 
             return services;
@@ -41,6 +55,9 @@ namespace Common.Core.CQRS
         //}
     }
 
-    public delegate ValueTask
-        CommandHandler<in TCommand>(TCommand command, CancellationToken ct);
+    //public delegate ValueTask
+    //    CommandHandler<in TCommand>(TCommand command, CancellationToken ct);
+
+    public delegate ValueTask<TResult>
+        CommandHandler<in TCommand, TResult>(TCommand query, CancellationToken ct);
 }

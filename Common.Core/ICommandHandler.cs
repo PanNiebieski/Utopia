@@ -16,8 +16,13 @@ namespace Common.Core.CQRS
     //    Task Handle(T command, CancellationToken token);
     //}
 
-    public interface ICommandHandler<in TCommand>
+    //public interface ICommandHandler<in TCommand>
+    //{
+    //    ValueTask Handle(TCommand command, CancellationToken token);
+    //}
+
+    public interface ICommandHandler<in TCommand, TResult>
     {
-        ValueTask Handle(TCommand command, CancellationToken token);
+        ValueTask<TResult> Handle(TCommand command, CancellationToken token);
     }
 }
