@@ -20,7 +20,7 @@ namespace Common.Core.CQRS
         public static IServiceCollection AddQueries (this IServiceCollection services)
         {
 
-            services.AddAutoMapper(Assembly.GetExecutingAssembly());
+
 
             services.AddQueryHandler
                 <GetAllAdministratorsQuery, GetAllAdministratorsQueryResponse, GetAllAdministratorsQueryHandler>();
@@ -30,6 +30,13 @@ namespace Common.Core.CQRS
 
             services.AddQueryHandler
                 <GetAllDeclarationQuery, GetAllDeclarationQueryResponse, GetAllDeclarationQueryHandler>();
+
+            return services;
+        }
+
+        public static IServiceCollection AddMapping(this IServiceCollection services)
+        {
+            services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
             return services;
         }

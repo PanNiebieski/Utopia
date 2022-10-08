@@ -23,7 +23,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Common.Core\Common.Core.CQRS.csproj" />
     <ProjectReference Include="..\DeclarationPlus.Core.Contracts\DeclarationPlus.Core.Contracts.csproj" />
-    <ProjectReference Include="..\DeclarationPlus.Core.Mapper\DeclarationPlus.Core.Mapper.csproj" />
     <ProjectReference Include="..\DeclarationPlus.Core.Scoring\DeclarationPlus.Core.Scoring.csproj" />
   </ItemGroup>
 
